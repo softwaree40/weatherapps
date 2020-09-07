@@ -1,0 +1,1 @@
+https://samples.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=05d8c6303652bd65353082a9acc4af55

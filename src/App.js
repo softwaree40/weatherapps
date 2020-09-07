@@ -1,26 +1,69 @@
 import React from 'react';
-import logo from './logo.svg';
+import Page0 from './Page0'
 import './App.css';
+import {getPressure} from "./actions/getWeatherAction"
+import {connect} from "react-redux"
+class App extends React.Component {
+   state = {
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    City:""
+
+   }
+   handleOnChange = (event)=>{
+     this.setState({
+      // [event.target.name]: event.target.value
+      City: event.target.value,
+      
+     })
+     //event.target.value=""
+    
+   }
+   handleOnClick = (event)=>{
+
+   event.preventDefault()
+   console.log(this.state)
+   this.refs.search.value=""
+   this.setState({
+     City: ""
+   })
+   this.props.getPressure(this.state.City)
+   }
+
+   /*handleOnBlur = (event) => {
+     event.target.value=""
+     console.log("i have blurred")
+   }*/
+
+  render(){
+    
+    return (
+      <div className="App">
+         <form >
+            <input placeholder="Enter Search ...." type="text" onChange={this.handleOnChange} ref="search"/>
+            <button onClick={this.handleOnClick}>Get info</button>
+         </form>
+         <hr/>
+         {this.props.pressure ?
+         <div>
+       <h1>Pressure:{this.props.pressure}</h1>
+       <h1>Temp: {this.props.temp}</h1> </div>: ""}
+      </div>
+    );
+
+
+
+  }
+}
+const mapStateToProps = (state)=>{
+
+  return ({
+   pressure: state.pressure,
+   temp: state.temp
+
+
+  })
+
+
 }
 
-export default App;
+export default connect(mapStateToProps,{getPressure})(App);
