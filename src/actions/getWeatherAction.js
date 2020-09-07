@@ -1,4 +1,4 @@
-import {getPressureAction} from '../actionCreator/getWeather'
+// import {getPressureAction} from '../actionCreator/getWeather'
 
 export const getPressure = (city)=>{
   return (dispatch) =>{

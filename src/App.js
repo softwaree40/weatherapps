@@ -1,5 +1,5 @@
 import React from 'react';
-import Page0 from './Page0'
+// import Page0 from './Page0'
 import './App.css';
 import {getPressure} from "./actions/getWeatherAction"
 import {connect} from "react-redux"

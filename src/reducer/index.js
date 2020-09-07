@@ -1,4 +1,4 @@
-import { actionCreators } from "redux"
+// import { actionCreators } from "redux"
 
 export const reducer = (state = {pressure: 0, temp: 0}, dispatch) => {
        switch(dispatch.type){
@@ -17,8 +17,12 @@ export const reducer = (state = {pressure: 0, temp: 0}, dispatch) => {
                  
     
                 }
-
+         default:
+            return state
        }
+       
 
-    return state
+    
 }
+
+ 
